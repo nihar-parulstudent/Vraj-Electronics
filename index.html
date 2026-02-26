@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroShop - Your Electronics Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+</head>
+<body>
+    <header>
+        <h1>Vraj Electronics</h1>
+        <p>Your one-stop electronics store</p>
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <div id="cartIndicator"><a href="checkout.html">Cart (<span id="cartCount">0</span>)</a></div>
+        <nav>
+            <ul id="navList">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="container">
+        <h2>Welcome to Vraj Electronics</h2>
+        <p>We sell high-quality electronic gadgets at competitive prices. Browse our catalog below and click "Buy" to order. (This example uses dummy buttons.)</p>
+    </section>
+
+    <section id="products" class="container">
+        <h2>Featured Products</h2>
+        <div class="products">
+            <div class="product">
+                <img src="https://via.placeholder.com/250x150?text=Smartphone" alt="Smartphone">
+                <h3>Smartphone X100</h3>
+                <p>A fast and powerful smartphone with great battery life.</p>
+                <div class="price">$499.00</div>
+                <button onclick="addToCart('Smartphone X100')">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/250x150?text=Laptop" alt="Laptop">
+                <h3>UltraBook Pro</h3>
+                <p>Lightweight laptop with long battery life and full HD screen.</p>
+                <div class="price">$999.00</div>
+                <button onclick="addToCart('UltraBook Pro')">Buy Now</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/250x150?text=Headphones" alt="Headphones">
+                <h3>Noise-Cancelling Headphones</h3>
+                <p>Comfortable over-ear headphones with active noise cancellation.</p>
+                <div class="price">$199.00</div>
+                <button onclick="addToCart('Noise-Cancelling Headphones')">Buy Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2>About Us</h2>
+        <p>ElectroShop is a family-owned business started in 2020. We are passionate about delivering quality electronics and excellent customer service. Our mission is to make technology accessible to everyone.</p>
+    </section>
+
+    <section id="contact" class="container">
+        <h2>Contact Us</h2>
+        <!-- you can use Formspree (static) or a local backend
+             To use Node.js, run `node server.js` and set action to "/contact".
+             To use PHP, deploy contact.php on a PHP-enabled server and set action to "contact.php". -->
+        <form id="contactForm" action="https://formspree.io/f/mngejvyg" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <p id="formNotice" style="display:none; color:green; text-align:center;">Message sent; thank you!</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ElectroShop. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

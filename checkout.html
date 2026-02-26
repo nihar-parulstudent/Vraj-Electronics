@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Vraj Electronics</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .checkout { max-width:600px; margin:2rem auto; background:#fff; padding:1rem; border:1px solid #ddd; border-radius:4px; }
+        .checkout h2 { text-align:center; }
+        .checkout ul { list-style:none; padding:0; }
+        .checkout li { padding:0.5rem 0; border-bottom:1px solid #eee; }
+        .checkout .total { font-weight:bold; margin-top:1rem; text-align:right; }
+        .checkout button { display:block; margin:1rem auto; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Checkout</h1>
+        <div id="cartIndicator"><a href="checkout.html">Cart (<span id="cartCount">0</span>)</a></div>
+    </header>
+    <section class="checkout">
+        <h2>Your Cart</h2>
+        <ul id="cartItems"></ul>
+        <div class="total" id="cartTotal"></div>
+        <button id="payButton">Proceed to Payment</button>
+    </section>
+    <footer>
+        <p>&copy; 2026 Vraj Electronics</p>
+    </footer>
+    <script>
+        // pull from localStorage
+        var cart = [];
+        function loadCart() {
+            var stored = localStorage.getItem('cart');
+            if (stored) {
+                try { cart = JSON.parse(stored) || []; } catch(e) { cart = []; }
+            }
+        }
+        function updateCartCount() {
+            var countEl = document.getElementById('cartCount');
+            if (countEl) {
+                countEl.textContent = cart.length;
+            }
+        }
+        function renderCart() {
+            var list = document.getElementById('cartItems');
+            list.innerHTML = '';
+            cart.forEach(function(item, idx) {
+                var li = document.createElement('li');
+                li.textContent = item;
+                list.appendChild(li);
+            });
+            document.getElementById('cartTotal').textContent = 'Total items: ' + cart.length;
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCart();
+            updateCartCount();
+            renderCart();
+            document.getElementById('payButton').addEventListener('click', function() {
+                // redirect to a dummy payment page or PayPal link
+                window.location.href = 'payment.html';
+            });
+        });
+    </script>
+</body>
+</html>
