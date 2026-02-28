@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Vraj Electronics</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .product-detail { max-width:800px; margin:2rem auto; background:#fff; padding:1rem; border:1px solid #ddd; border-radius:4px; }
+        .product-detail img { max-width:100%; height:auto; }
+        .product-detail h2 { margin-top:0; }
+        .product-detail .price { font-size:1.5rem; font-weight:bold; margin:1rem 0; }
+        .product-detail .quantity { width:3rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <img id="logo" src="logo.svg" alt="Vraj Electronics logo">
+            <div>
+                <h1>Vraj Electronics</h1>
+                <p>Your one-stop electronics store</p>
+            </div>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <div id="cartIndicator"><a href="checkout.html">Cart (<span id="cartCount">0</span>)</a></div>
+        <nav>
+            <ul id="navList">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li id="authLink"><!-- filled by JS --></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="product-detail" id="detailSection">
+        <!-- filled by JS -->
+    </section>
+    <footer>
+        <p>&copy; 2026 Vraj Electronics</p>
+    </footer>
+    <script src="scripts.js"></script>
+    <script>
+        // read product id from query string
+        function getQueryParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCart();
+            updateCartCount();
+            const id = getQueryParam('id');
+            const prod = products.find(p => p.id == id);
+            const section = document.getElementById('detailSection');
+            if (prod && section) {
+                section.innerHTML = `
+                    <h2>${prod.name}</h2>
+                    <img src="${prod.image}" alt="${prod.name}">
+                    <p>${prod.description}</p>
+                    <div class="price">$${prod.price.toFixed(2)}</div>
+                    <label>Quantity: <input type="number" id="detailQty" value="1" min="1" class="quantity"></label>
+                    <button id="addDetail">Add to Cart</button>
+                `;
+                document.getElementById('addDetail').addEventListener('click', function() {
+                    const qty = parseInt(document.getElementById('detailQty').value, 10);
+                    addToCart(prod.id, qty);
+                    alert('Added to cart.');
+                });
+            } else {
+                section.innerHTML = '<p>Product not found.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
