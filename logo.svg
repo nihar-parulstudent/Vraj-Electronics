@@ -1,0 +1,7 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black lightning bolt -->
+  <path d="M 80 40 L 120 100 L 100 100 L 140 180 L 60 120 L 85 120 Z" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="2"/>
+  
+  <!-- Yellow lightning bolt accent -->
+  <path d="M 90 60 L 110 105 L 95 105 L 125 170 L 70 115 L 90 115 Z" fill="#FFC107" stroke="none"/>
+</svg>

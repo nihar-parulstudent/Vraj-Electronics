@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Vraj Electronics</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <img id="logo" src="logo.svg" alt="Vraj Electronics logo">
+            <div>
+                <h1>Vraj Electronics</h1>
+                <p>Your one-stop electronics store</p>
+            </div>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        <div id="cartIndicator"><a href="checkout.html">Cart (<span id="cartCount">0</span>)</a></div>
+        <nav>
+            <ul id="navList">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li id="authLink"><!-- filled by JS --></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="container">
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <button type="submit">Log In</button>
+        </form>
+        <p>Don't have an account? <a href="register.html">Register here</a>.</p>
+        <p id="loginNotice" style="display:none; color:red; text-align:center;"></p>
+    </section>
+    <script src="scripts.js"></script>
+</body>
+</html>
