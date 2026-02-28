@@ -12,12 +12,28 @@
     </header>
     <section class="container">
         <h2>Complete Your Purchase</h2>
-        <p>To finish your order, click the button below to go to the payment gateway.</p>
-        <!-- example PayPal link with placeholder; replace with your actual integration -->
-        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YOUR_BUTTON_ID" target="_blank">
-            <button>Pay with PayPal</button>
-        </a>
+        <div id="paymentMessage">
+            <p>Redirecting to payment gateway...</p>
+        </div>
+        <!-- if you don't have backend support you can still offer a static button or instructions -->
+        <button id="manualPayBtn" style="display:none;">Manual Pay</button>
     </section>
+    <script>
+        // display success message when redirected back from Stripe
+        function getQueryParam(name) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            var msgDiv = document.getElementById('paymentMessage');
+            var sessionId = getQueryParam('session_id');
+            if (sessionId) {
+                msgDiv.innerHTML = '<p>Thank you for your purchase! (Session: '+sessionId+')</p>';
+                // here you could clear cart and record order history
+                localStorage.removeItem('cart');
+            }
+        });
+    </script>
     <footer>
         <p>&copy; 2026 Vraj Electronics</p>
     </footer>
